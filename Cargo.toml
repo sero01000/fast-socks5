@@ -1,11 +1,11 @@
 [package]
 name = "fast-socks5"
 version = "0.8.2"
-authors = ["Jonathan Dizdarevic <dizzda@gmail.com>"]
+authors = ["Jonathan Dizdarevic <dizzda@gmail.com>","sero01000"]
 edition = "2021"
 license = "MIT"
 description = "Fast SOCKS5 client/server implementation written in Rust async/.await (tokio)"
-repository = "https://github.com/dizda/fast-socks5"
+repository = "https://github.com/sero01000/fast-socks5"
 categories = ["asynchronous", "network-programming", "command-line-utilities" ,"authentication" ]
 keywords = ["io", "proxy", "vpn", "async", "socks"]
 
@@ -13,18 +13,22 @@ keywords = ["io", "proxy", "vpn", "async", "socks"]
 default = []
 socks4 = []
 
+[profile.release]
+opt-level = 3
+lto = true
+
 [dependencies]
-log = "0.4"
-tokio = { version = "1.25.0", features = ["io-util", "net", "time", "macros"] }
-anyhow = "1.0"
-thiserror = "1.0"
-tokio-stream = "0.1.9"
+log = "0.4.18"
+tokio = { version = "1.28.2", features = ["io-util", "net", "time", "macros"] }
+anyhow = "1.0.71"
+thiserror = "1.0.40"
+tokio-stream = "0.1.14"
 
 # Dependencies for examples and tests
 [dev-dependencies]
 env_logger = "0.9"
 structopt = "0.3"
-tokio = { version = "1.25.0", features = ["io-util", "net", "time", "rt-multi-thread", "macros"] }
+tokio = { version = "1.28.2", features = ["io-util", "net", "time", "rt-multi-thread", "macros"] }
 tokio-test = "0.4.2"
 
 [[example]]
